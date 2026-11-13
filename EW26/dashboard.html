@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Essay writing workshop – Dashboard</title>
+<link rel="stylesheet" href="../shared/style.css">
+<style>
+  .stage { position: relative; }
+  .biglist { font-size: 22px; line-height: 1.6; margin: 6px 0; }
+  .card.para { font-size: 21px; line-height: 1.55; }
+  .corner { position: fixed; right: 18px; bottom: 70px; background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 8px; display: flex; gap: 8px; align-items: center; box-shadow: 0 2px 8px rgba(0,0,0,.08); }
+  .corner .miniqr svg { width: 92px; height: 92px; display: block; }
+  .wall { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; margin-top: 10px; max-height: calc(100vh - 230px); overflow: auto; padding-right: 160px; }
+  .wall.one { grid-template-columns: 1fr; max-height: 420px; padding-right: 0; }
+  .olcard { position: relative; border: 1px solid var(--line); border-radius: 12px; padding: 12px 30px 12px 14px; font-size: 17px; line-height: 1.45; background: var(--yellow-soft); cursor: pointer; }
+  .olcard .x { position: absolute; top: 4px; right: 4px; border: none; background: transparent; font-size: 20px; padding: 2px 8px; color: var(--muted); }
+  .wall.zoomed { display: block; padding-right: 160px; }
+  .olcard.big { font-size: 34px; line-height: 1.5; padding: 26px 34px; cursor: default; }
+  .zoomnav { display: flex; gap: 10px; align-items: center; margin-top: 12px; }
+  .timer { font-size: 44px; }
+</style>
+</head>
+<body class="dash">
+  <div class="band">
+    <div><div class="brand">Essay writing workshop</div><div class="sub" id="modname"></div></div>
+    <div style="display:flex;gap:10px;align-items:center"><span id="demoflag"></span><span id="joined" class="pill"></span></div>
+  </div>
+  <main><div class="stage" id="stage"></div></main>
+  <div class="controls" id="controls">
+    <button id="back">◀ Back</button>
+    <button class="primary" id="next">Next ▶</button>
+    <div class="grow"><select id="steps" aria-label="Jump to step"></select></div>
+    <button id="bots" class="hidden">+ 16 simulated students</button>
+    <button id="newSession" title="Start a new session: everyone re-joins">New session</button>
+  </div>
+
+  <script src="../shared/config.js"></script>
+  <script src="../shared/lib/firebase-app-compat.js"></script>
+  <script src="../shared/lib/firebase-firestore-compat.js"></script>
+  <script src="../shared/lib/chart.umd.min.js"></script>
+  <script src="../shared/lib/qrcode.js"></script>
+  <script src="../shared/store.js"></script>
+  <script src="js/common.js?v=1"></script>
+  <script src="js/dashboard.js?v=1"></script>
+</body>
+</html>
